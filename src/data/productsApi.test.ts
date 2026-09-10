@@ -20,7 +20,7 @@ describe('productsApi', () => {
 
   beforeEach(() => {
     fetchMock.mockReset();
-    global.fetch = fetchMock as typeof fetch;
+    globalThis.fetch = fetchMock as typeof fetch;
   });
 
   it('builds paginated list URLs with skip and limit', async () => {

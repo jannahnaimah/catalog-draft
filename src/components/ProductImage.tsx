@@ -1,5 +1,5 @@
 import { Image, type ImageStyle } from 'expo-image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { colors } from '../theme';
@@ -12,6 +12,11 @@ type ProductImageProps = {
 
 export function ProductImage({ uri, style, accessibilityLabel }: ProductImageProps) {
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [uri]);
+
   const showFallback = !uri || failed;
 
   if (showFallback) {
